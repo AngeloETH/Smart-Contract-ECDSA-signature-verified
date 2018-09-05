@@ -1,6 +1,6 @@
 
 
-The implementation of ecrecovery in solidity using truffle 
+Implementation of ecrecovery in solidity using truffle 
 
 run test:
 
