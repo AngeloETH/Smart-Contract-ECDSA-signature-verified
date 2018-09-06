@@ -13,7 +13,7 @@ truffle test Authorization.test.js
 
 output:</br>
 ```
-    Contract: Authorization
+  Contract: Authorization
     √ register: owner verify signer (verified[owner][signer] = true) (63ms)
     √ user1 => CheckSig(TEST_MESSAGE, v, r, s, owner) === true
     √ user1 => CheckSig(WRONG_MESSAGE, v, r, s, owner) === false
