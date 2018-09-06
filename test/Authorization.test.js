@@ -8,6 +8,7 @@ const signer = web3.eth.accounts[0];
 const owner = web3.eth.accounts[5];
 const user1 = web3.eth.accounts[2];
 const user2 = web3.eth.accounts[4];
+const Ramdom_user = web3.eth.accounts[9];
 
 const sig = web3.eth.sign(signer,TEST_MESSAGE); //signature
 
@@ -40,12 +41,12 @@ contract('Authorization', function () {
         assert.equal(await authorization.checkSig(WRONG_MESSAGE, v, r, s, owner, {from: user1}),false);
     })
 
-    it('user2 => CheckSig(TEST_MESSAGE, v, r, s, owner) === true', async function(){
+    it('Random user => CheckSig(TEST_MESSAGE, v, r, s, user2) === false', async function(){
         authorization.register(signer, {from: owner});
         let r = '0x' + sig.slice(2,66);
         let s = '0x' + sig.slice(66,130);
         let v = parseInt(sig.slice(130,132))+27;
-        assert.equal(await authorization.checkSig(TEST_MESSAGE, v, r, s, owner, {from: user2}),true);
+        assert.equal(await authorization.checkSig(TEST_MESSAGE, v, r, s, user2, {from: Ramdom_user}),false);
     })
 
 })
